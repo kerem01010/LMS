@@ -1,0 +1,18 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <h2>Search Results</h2>
+        {% if book %}
+            <div class="search-result">
+                <h3>{{ book.title }}</h3>
+                <p>Author: {{ book.authors }}</p>
+                <p>Title: {{ book.title }}</p>
+                <p>Average Rating: {{ book.average_rating }}</p>
+                <p>Views: {{ book.views }}</p>
+            </div>
+        {% else %}
+            <p>No book found for the query "{{ query }}".</p>
+        {% endif %}
+    </div>
+{% endblock content %}

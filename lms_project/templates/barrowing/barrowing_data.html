@@ -1,0 +1,60 @@
+
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+  
+  <div id="titlebar" class="gradient">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Select Borrowing Data</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <section class="fullwidth_block margin-top-0 padding-top-0 padding-bottom-50" data-background-color="#fff"> 
+    <div class="container">
+      
+      <div class="row d-flex justify-content-center" style="display: flex; justify-content: center;">  
+        <div class="col-lg-6">
+            <div class=" barrowing_widget_box" style="border: 1px dashed rgba(42, 1, 119, 0.61); padding: 14px; border-radius: 10px;">
+              <h3><i class="fa fa-calendar"></i> Borrowing</h3>
+              <form class="row with-forms margin-top-0" method="POST" action="{% url 'barrowing:check_book_availability' %}">
+                {% csrf_token %}
+                <input type="hidden" value="{{library.id}}" name="library-id" id="">
+                <div class="col-lg-12 col-md-12 select_date_box">
+                    <label for="">Check-in Date</label>
+                    <input type="date" id="date-picker" name="checkin" placeholder="Select Date">
+                </div>
+                <div class="col-lg-12 col-md-12 select_date_box">
+                    <label for="">Check-out Date</label>
+                    <input type="date" name="checkout" id="date-picker" placeholder="Select Date">
+                </div>
+                <div class="with-forms">
+                    <div class="col-lg-12 col-md-12">
+                        <a href="#">Guests <span class="qtyTotal" name="qtyTotal">1</span></a>
+                        <div class="panel-dropdown-content">
+                       
+                     s
+                    </div>
+                </div>
+
+                <div class="with-forms margin-top-30">
+                    
+                </div>
+               
+                <button type="submit" class="utf_progress_button button fullwidth_block margin-top-5">Check Availability</button>
+            </form>
+              <button class="like-button add_to_wishlist"><span class="like-icon"></span> Add to Wishlist</button>
+              <div class="clearfix"></div>
+            </div>
+        </div>      
+      </div>      
+    </div>    
+  </section>
+
+
+  
+{% endblock content %}

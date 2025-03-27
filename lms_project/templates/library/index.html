@@ -1,0 +1,128 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Banner -->
+    <div class="search_container_block main_search_block" data-background-image="{% static 'images/home_section_1.jpg' %}">
+        <div class="main_inner_search_block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>LIBRARY MANAGEMENT SYSTEM</h2>
+                        <h4>Find the most suitable book for you.</h4>
+                        <div class="main_input_search_part">
+                            <form method="get" action="{% url 'library:search_books' %}">
+                                <div class="main_input_search_part_item">
+                                    <input type="text" name="query" placeholder="Books" value="" />
+                                </div>
+                                <button class="button" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="fullwidth_block margin-top-65 padding-top-75 padding-bottom-70" data-background-color="#f9f9f9">
+        <div class="container">
+            <div class="row slick_carousel_slider">
+                <div class="col-md-12">
+                    <h3 class="headline_part centered margin-bottom-45">Our Popular Books</h3>
+                </div>
+                
+                {% for h in books %}
+                    <div class="col-lg-4">
+                        <a href="{% url 'library:detail' h.slug %}" class="utf_listing_item-container compact">
+                            <div class="utf_listing_item">
+                                <img src="{{h.image.url}}" alt="">
+                                <span class="utf_open_now">Open Now</span>
+                                <div class="utf_listing_item_content">
+                                    <div class="utf_listing_prige_block"></div>
+                                    <h3>{{h.name|truncatechars:20}}</h3>
+                                    <span><i class="fas fa-location-arrow"></i> {{h.title}}</span>
+                                    <span><i class="fas fa-phone"></i> {{h.authors}}</span>
+                                </div>
+                            </div>
+                            <div class="utf_star_rating_section" data-rating="{{h.average_rating}}">
+                                {% if h.average_rating == None %}
+                                    <div class="utf_counter_star_rating">No Rating Yet</div>
+                                {% else %}
+                                    <div class="utf_counter_star_rating">{{h.average_rating}}/5 ({{h.rating_count}} reviews)</div>
+                                {% endif %}
+                                <span class="utf_view_count"> {{h.views}}</span>
+                                <span class="like-icon add-to-bookmark-{{h.id}}" data-library="{{h.id}}" id="add-to-bookmark"></span>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="all-books-button">
+                    <a href="{% url 'library:all_books' %}" class="button">All Books</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+
+    <section class="fullwidth_block padding-bottom-75">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="headline_part centered margin-top-80">How It Works?</h2>
+                </div>
+            </div>
+            <div class="row container_icon">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="box_icon_two box_icon_with_line">
+                        <i class="im im-icon-Map-Marker2"></i>
+                        <h3>Find Interesting Books</h3>
+                        <p>Find books in genres that interest you, by authors you like</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="box_icon_two box_icon_with_line">
+                        <i class="im im-icon-Mail-Add"></i>
+                        <h3>Contact other users</h3>
+                        <p>See other users' comments about the books you have chosen and join the conversation about the books you have read</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="box_icon_two">
+                        <i class="im im-icon-Administrator"></i>
+                        <h3>Make a Reservation</h3>
+                        <p>We will reserve your favourite book for you on the most convenient date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="utf_cta_area_item utf_cta_area2_block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="utf_subscribe_block clearfix">
+                        <div class="col-md-8 col-sm-7">
+                            <div class="section-heading">
+                                <h2 class="utf_sec_title_item utf_sec_title_item2">Subscribe to Newsletter!</h2>
+                                <p class="utf_sec_meta">
+                                    Subscribe to get latest updates and information.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-5">
+                            <div class="contact-form-action">
+                                <form method="post">
+                                    <span class="la la-envelope-o"></span>
+                                    <input class="form-control" type="email" placeholder="Enter your email" required="">
+                                    <button class="utf_theme_btn" type="submit">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

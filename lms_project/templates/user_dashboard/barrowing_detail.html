@@ -1,0 +1,119 @@
+
+{% extends 'partials/dashboard_base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <a href="#" class="utf_dashboard_nav_responsive"><i class="fa fa-reorder"></i> Dashboard Sidebar Menu</a>
+        {% include 'partials/dashboard_sidebar.html' %}
+        <div class="utf_dashboard_content">
+            
+           
+            <div class="row"> 
+                <div class="col-lg-6 col-md-12">
+                  <div class="utf_dashboard_list_box margin-top-0">
+                    <h4>Borrowing ID: {{ barrowing.barrowing_id }}</h4>
+                    <ul>
+                      <li class="utf_approved_barrowing_listing">
+                        <div class="utf_list_box_listing_item barrowing">
+                          <div class="utf_list_box_listing_item_content">
+                            <div class="inner">
+                              <h3>{{barrowing.full_name|title}} <span class="utf_barrowing_listing_status">{{barrowing.payment_status|title}}</span></h3>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Library Name:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li>{{barrowing.library.title}}</li>						  						  
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Library Address:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li><small>{{barrowing.library.address}}</small></li>						  						  
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Library Email:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li>{{barrowing.library.email}}</li>						  						  
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Library Phone:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li>{{barrowing.library.mobile}}</li>						  						  
+                                </ul>
+                              </div>
+                              <hr>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Checkin Date:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{barrowing.check_in_date}}</li>
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Checkout Date:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{barrowing.check_out_date}}</li>
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Total Days:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{ barrowing.total_days }} Days</li>
+                                </ul>
+                              </div>
+                              
+                              <hr>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Full Name:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{barrowing.full_name|title}}</li>
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Email Address:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{barrowing.email}}</li>
+                                </ul>
+                              </div>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Phone Number:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{barrowing.phone}}</li>
+                                </ul>
+                              </div>
+                              <hr>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Price:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                </ul>
+                              </div>
+                              <hr>
+                              <div class="utf_inner_barrowing_listing_list">
+                                <h5>Date Booked:</h5>
+                                <ul class="utf_barrowing_listing_list">
+                                  <li class="highlighted">{{barrowing.date}}</li>
+                                </ul>
+                              </div>				  					  
+                            </div>
+                          </div>
+                        </div>
+                        <div class="buttons-to-right "> <a href="#" class="button gray reject"><i class="fas fa-receipt "></i> View Invoice</a> </div>
+                        <div class="buttons-to-right margin-top-10"> <a href="#" class="button gray reject"><i class="fas fa-ban"></i> Cancel borrowing</a> </div>
+                      </li>
+                      
+                    </ul>
+                  </div>		  
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="utf_dashboard_list_box margin-top-0">
+                
+                      
+                      
+                    </div>		  
+                  </div>
+              </div>
+        </div>
+    </div>
+{% endblock content %}
